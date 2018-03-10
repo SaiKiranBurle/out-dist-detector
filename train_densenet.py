@@ -49,7 +49,7 @@ generator = ImageDataGenerator(rotation_range=15,
 generator.fit(trainX, seed=0)
 
 # Load model
-weights_file="weights/DenseNet-100-12-CIFAR10.h5"
+weights_file = "weights/DenseNet-100-12-CIFAR10.h5"
 if os.path.exists(weights_file):
     # model.load_weights(weights_file, by_name=True)
     print("Model loaded.")
