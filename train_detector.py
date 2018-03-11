@@ -4,7 +4,7 @@ import keras.backend as K
 import numpy as np
 from keras.datasets.cifar import load_batch
 from keras.engine import Model
-from keras.layers import Dense
+from keras.layers import Dense, Flatten
 from keras.optimizers import Adam
 from keras.utils import get_file
 from keras.utils import np_utils
@@ -79,8 +79,15 @@ def get_model():
         layer.trainable = False
 
     x = base_model.output
-    x = Dense(units=10, activation='relu')(x)
-    predictions = Dense(2, activation='softmax')(x)
+
+    # Use output to determine in/out dist
+    # x = Dense(units=10, activation='relu')(x)
+    # predictions = Dense(2, activation='softmax')(x)
+
+    # Use gradients to determine in/out
+    gradients = K.gradients(x, base_model.input)
+    gradients = Flatten()(gradients)
+    predictions = Dense(2, activation='softmax')(gradients)
 
     model = Model(inputs=base_model.input, outputs=predictions)
 
