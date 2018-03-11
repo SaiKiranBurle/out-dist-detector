@@ -76,7 +76,7 @@ def get_model():
         layer.trainable = False
 
     x = base_model.output
-    x = Dense(units=1024, activation='relu')(x)
+    x = Dense(units=10, activation='relu')(x)
     predictions = Dense(2, activation='softmax')(x)
 
     model = Model(inputs=base_model.input, outputs=predictions)
