@@ -57,6 +57,9 @@ def get_in_dist_train_data():
     x_train = x_train.astype('float32')
     x_test = x_test.astype('float32')
 
+    x_train = x_train[:1000]
+    y_train = y_train[:1000]
+
     return (x_train, y_train), (x_test, y_test)
 
 
