@@ -81,13 +81,13 @@ def get_model():
     x = base_model.output
 
     # Use output to determine in/out dist
-    # x = Dense(units=10, activation='relu')(x)
-    # predictions = Dense(2, activation='softmax')(x)
+    x = Dense(units=10, activation='relu')(x)
+    predictions = Dense(2, activation='softmax')(x)
 
     # Use gradients to determine in/out
-    gradients = K.gradients(x, base_model.input)
-    gradients = Flatten()(gradients)
-    predictions = Dense(2, activation='softmax')(gradients)
+    # gradients = K.gradients(x, base_model.input)
+    # gradients = Flatten()(gradients)
+    # predictions = Dense(2, activation='softmax')(gradients)
 
     model = Model(inputs=base_model.input, outputs=predictions)
 
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     model.fit(x=x_train,
               y=y_train,
               batch_size=32,
-              epochs=10,
+              epochs=100,
               validation_data=(x_test, y_test))
 
     from IPython import embed
