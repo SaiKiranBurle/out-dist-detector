@@ -41,5 +41,6 @@ I will start off by saying I got better than expected results for such a simple 
 ## State-of-the-art benchmarks
 
 I got the idea for implementing this after reading this paper on arXiv: [link](https://arxiv.org/abs/1706.02690)
-The employ a completely different approach from what I described above.
+
+They employ a completely different approach from what I described above.
 The classification accuracy reported in the paper for the same setting of train/test data is 0.94.
