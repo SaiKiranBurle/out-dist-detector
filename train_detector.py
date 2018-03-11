@@ -86,14 +86,8 @@ def get_model():
 
     # Use output to determine in/out dist
     x = Dense(units=30, activation='relu')(x)
-    x = Dense(units=5, activation='relu')(x)
     x = Dense(units=10, activation='relu')(x)
     predictions = Dense(2, activation='softmax')(x)
-
-    # Use gradients to determine in/out
-    # gradients = K.gradients(x, base_model.input)
-    # gradients = Flatten()(gradients)
-    # predictions = Dense(2, activation='softmax')(gradients)
 
     model = Model(inputs=base_model.input, outputs=predictions)
 
