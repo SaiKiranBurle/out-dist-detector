@@ -9,6 +9,7 @@ from keras.optimizers import Adam
 from keras.utils import get_file
 from keras.utils import np_utils
 from keras.preprocessing.image import ImageDataGenerator
+import tensorflow as tf
 
 import densenet
 
@@ -79,6 +80,7 @@ def get_model():
         layer.trainable = False
 
     x = base_model.output
+    x = tf.gather(x, tf.nn.top_k(x, k=10).indices)
 
     # Use output to determine in/out dist
     x = Dense(units=30, activation='relu')(x)
