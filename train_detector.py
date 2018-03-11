@@ -81,7 +81,8 @@ def get_model():
     x = base_model.output
 
     # Use output to determine in/out dist
-    x = Dense(units=50, activation='relu')(x)
+    x = Dense(units=30, activation='relu')(x)
+    x = Dense(units=5, activation='relu')(x)
     x = Dense(units=10, activation='relu')(x)
     predictions = Dense(2, activation='softmax')(x)
 
