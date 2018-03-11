@@ -71,7 +71,7 @@ def get_out_dist_train_data():
 
 def get_model():
     base_model = densenet.DenseNet((32, 32, 3), depth=100, growth_rate=12, bottleneck=True, weights=None)
-    # model.load_weights(weights_file, by_name=True)
+    base_model.load_weights(pretrained_model_weights_path, by_name=True)
     for layer in base_model.layers:
         layer.trainable = False
 
