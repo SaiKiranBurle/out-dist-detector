@@ -80,7 +80,7 @@ def get_model():
         layer.trainable = False
 
     x = base_model.output
-    x = Lambda(lambda e: tf.gather(e, tf.nn.top_k(e, k=10).indices))(x)
+    x = Lambda(lambda e: tf.nn.top_k(e, k=10)[0])(x)
 
     # Use output to determine in/out dist
     x = Dense(units=30, activation='relu')(x)
