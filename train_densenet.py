@@ -21,7 +21,7 @@ nb_epoch = 300
 dropout_rate = 0.0
 OUT_DIR = "weights/"
 
-model = densenet.DenseNet((32, 32, 3), depth=100,growth_rate=12, bottleneck=True, weights=None)
+model = densenet.DenseNet((32, 32, 3), depth=100, growth_rate=12, bottleneck=True, weights=None)
 print "Model created"
 
 model.summary()
@@ -52,7 +52,7 @@ generator.fit(trainX, seed=0)
 weights_file = "weights/DenseNet-100-12-CIFAR10.h5"
 if os.path.exists(weights_file):
     # model.load_weights(weights_file, by_name=True)
-    print("Model loaded.")
+    print "Model loaded."
 
 lr_reducer = ReduceLROnPlateau(monitor='val_acc', factor=np.sqrt(0.1),
                                cooldown=0, patience=5, min_lr=1e-5)
