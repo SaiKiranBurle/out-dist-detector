@@ -4,7 +4,7 @@ import keras.backend as K
 import numpy as np
 from keras.datasets.cifar import load_batch
 from keras.engine import Model
-from keras.layers import Dense, Flatten
+from keras.layers import Dense, Lambda
 from keras.optimizers import Adam
 from keras.utils import get_file
 from keras.utils import np_utils
@@ -80,7 +80,7 @@ def get_model():
         layer.trainable = False
 
     x = base_model.output
-    x = tf.gather(x, tf.nn.top_k(x, k=10).indices)
+    x = Lambda(lambda e: tf.gather(e, tf.nn.top_k(e, k=10).indices))(x)
 
     # Use output to determine in/out dist
     x = Dense(units=30, activation='relu')(x)
