@@ -58,15 +58,17 @@ def get_in_dist_train_data():
     x_train = x_train.astype('float32')
     x_test = x_test.astype('float32')
 
-    x_train = x_train[:1000]
-    y_train = y_train[:1000]
+    x_train = x_train[:4000]
+    y_train = y_train[:4000]
+    x_test = x_test[:6000]
+    y_test = y_test[:6000]
 
     return (x_train, y_train), (x_test, y_test)
 
 
 def get_out_dist_train_data():
     img_gen = ImageDataGenerator()
-    num_train = 1000    # 1K, 9K
+    num_train = 4000
     data_gen = img_gen.flow_from_directory(out_dist_path, target_size=(32, 32),
                                            batch_size=10000, seed=0)
     data = data_gen.next()
